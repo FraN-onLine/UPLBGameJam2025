@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://cpox1ufgx837r"]
+
+[ext_resource type="PackedScene" uid="uid://dcsk8ndtlfdua" path="res://Character/Player.tscn" id="1_jjgbg"]
+[ext_resource type="PackedScene" uid="uid://br806ppqkh0au" path="res://Enemy/spirit.tscn" id="2_bo1nx"]
+
+[sub_resource type="Gradient" id="Gradient_jjgbg"]
+offsets = PackedFloat32Array(0.162338, 0.987013, 1)
+colors = PackedColorArray(0, 0.882353, 0.6, 1, 0.581033, 0.563331, 0.159463, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_bo1nx"]
+gradient = SubResource("Gradient_jjgbg")
+fill_from = Vector2(0.380734, 0.876147)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jjgbg"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_jjgbg"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_jjgbg")]
+position = Vector2(32, 66)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -3
+position = Vector2(50, 55)
+scale = Vector2(5.85938, 3.51563)
+texture = SubResource("GradientTexture2D_bo1nx")
+
+[node name="Area2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(83, 70)
+shape = SubResource("CircleShape2D_jjgbg")
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
+position = Vector2(97, 69)
+scale = Vector2(42.5, 16.5)
+texture = SubResource("PlaceholderTexture2D_jjgbg")
+
+[node name="Spirit" parent="." instance=ExtResource("2_bo1nx")]
+position = Vector2(85, 35)
