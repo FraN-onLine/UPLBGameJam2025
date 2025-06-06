@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://dav0o7j0dutqs"]
+
+[ext_resource type="Script" uid="uid://dlpk3axmyksvj" path="res://Character/fixed_player.gd" id="1_dem81"]
+[ext_resource type="Texture2D" uid="uid://b5ijn4dt0df05" path="res://Assets/0x72_16x16DungeonTileset.v5.png" id="1_ktxeh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ktxeh"]
+atlas = ExtResource("1_ktxeh")
+region = Rect2(96, 240, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dem81"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ktxeh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b3j1v"]
+radius = 5.0
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_dem81")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -8)
+sprite_frames = SubResource("SpriteFrames_dem81")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -5)
+shape = SubResource("CircleShape2D_b3j1v")
