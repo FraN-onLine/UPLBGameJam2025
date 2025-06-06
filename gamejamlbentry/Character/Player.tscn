@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://dcsk8ndtlfdua"]
+[gd_scene load_steps=6 format=3 uid="uid://dcsk8ndtlfdua"]
 
 [ext_resource type="Texture2D" uid="uid://b5ijn4dt0df05" path="res://Assets/0x72_16x16DungeonTileset.v5.png" id="1_lgt04"]
 [ext_resource type="Script" uid="uid://clattwm6yiw4g" path="res://Character/player.gd" id="1_schp4"]
-[ext_resource type="PackedScene" uid="uid://ygi0h704mijm" path="res://Misc/healthbar.tscn" id="3_pusnx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_schp4"]
 atlas = ExtResource("1_lgt04")
@@ -20,10 +19,11 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_713gb"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_schp4"]
+radius = 4.0
+height = 12.0
 
 [node name="Player" type="Sprite2D"]
+position = Vector2(1, -9)
 script = ExtResource("1_schp4")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -32,18 +32,8 @@ sprite_frames = SubResource("SpriteFrames_pusnx")
 [node name="HitBox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(0, 1)
 shape = SubResource("CapsuleShape2D_713gb")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(4, 4)
-
-[node name="Hand" type="Sprite2D" parent="."]
-scale = Vector2(4.5, 4.25)
-texture = SubResource("PlaceholderTexture2D_schp4")
-offset = Vector2(3.5, 0)
-
-[node name="Healthbar" parent="." instance=ExtResource("3_pusnx")]
-offset_left = -9.0
-offset_top = -12.0
-offset_right = 9.0
-offset_bottom = -11.0
