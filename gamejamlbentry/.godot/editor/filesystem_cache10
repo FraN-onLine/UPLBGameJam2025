@@ -1,5 +1,5 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1749205316
+::res://::1749207498
 icon.svg::CompressedTexture2D/CompressedTexture2D::7038574965968849475::1749189927::1749200109::1::::<><><>0<>0<>dac20505b2d9dea365a362a6cb9d3b75<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
 ::res://Assets/::1749205212
 0x72_16x16DungeonTileset.v5.png::CompressedTexture2D/CompressedTexture2D::4509172211830586060::1749189927::1749200109::1::::<><><>0<>0<>aa0400e3df63582d49ae9d2d4d6fb1fe<>res://.godot/imported/0x72_16x16DungeonTileset.v5.png-f113d725e7a7db67cc5e4ca4db2eca1f.ctex::
@@ -65,11 +65,15 @@ Crane.png::CompressedTexture2D/CompressedTexture2D::7703265432424330975::1749201
 FishNet.png::CompressedTexture2D/CompressedTexture2D::6044406277551224330::1749201486::1749201486::1::::<><><>0<>0<>2e8f09164cae286f00710c6af5a00e29<>res://.godot/imported/FishNet.png-9ded40508cf0c6950fd60ba574aea9f3.ctex::
 FishNetFull.png::CompressedTexture2D/CompressedTexture2D::1539767780362543942::1749201486::1749201486::1::::<><><>0<>0<>c263975e9a6dd11767a1c4a4fee35095<>res://.godot/imported/FishNetFull.png-a62e7bf833263a5d3fb8b134933e678d.ctex::
 Sail.png::CompressedTexture2D/CompressedTexture2D::6309785505509244707::1749201486::1749201486::1::::<><><>0<>0<>67cb2cf40d61fe8b081b471ea2f678c0<>res://.godot/imported/Sail.png-b2267b3b7e0cf31b1c18b0b46f24c5af.ctex::
-::res://Character/::1749205158
+::res://Character/::1749209119
 player.gd::GDScript::5546107375843581400::1749204536::0::1::::Player<>Sprite2D<><>0<>0<><>::
-Player.tscn::PackedScene::7337465327371108652::1749204908::0::1::::<><><>0<>0<><>::uid://b5ijn4dt0df05::::res://Assets/0x72_16x16DungeonTileset.v5.png<>uid://clattwm6yiw4g::::res://Character/player.gd
+Player.tscn::PackedScene::7337465327371108652::1749209119::0::1::::<><><>0<>0<><>::uid://b5ijn4dt0df05::::res://Assets/0x72_16x16DungeonTileset.v5.png<>uid://clattwm6yiw4g::::res://Character/player.gd
+fixedPlayer.tscn::PackedScene::4073976420476795834::1749209149::0::1::::<><><>0<>0<><>::uid://bo5fwrym544op::::res://Character/character_body_2d.gd<>uid://b5ijn4dt0df05::::res://Assets/0x72_16x16DungeonTileset.v5.png
+character_body_2d.gd::GDScript::3431339630235835175::1749208630::0::1::::Player<>CharacterBody2D<><>0<>0<><>::
 ::res://Misc/::1749205158
 Healthbar.gd::GDScript::6211244601461074578::1749205158::0::1::::<>ProgressBar<><>0<>0<><>::
 healthbar.tscn::PackedScene::1697449312899202862::1749205158::0::1::::<><><>0<>0<><>::uid://cuq1j5r4jjhuw::::res://Healthbar.gd
-::res://Scenes/::1749205158
-main.tscn::PackedScene::5856019290484384441::1749204908::0::1::::<><><>0<>0<><>::uid://dcsk8ndtlfdua::::res://Character/Player.tscn<>uid://dntiqcu20m4lr::::res://Assets/Backgrounds/Tilesets/TilesetNature.png<>uid://cj1snkoud78mb::::res://Assets/Backgrounds/Tilesets/TilesetField.png
+::res://Scenes/::1749209119
+main.tscn::PackedScene::5856019290484384441::1749209119::0::1::::<><><>0<>0<><>::uid://dntiqcu20m4lr::::res://Assets/Backgrounds/Tilesets/TilesetNature.png<>uid://bybp2cw444i7c::::res://Character/fixedPlayer.tscn<>uid://cj1snkoud78mb::::res://Assets/Backgrounds/Tilesets/TilesetField.png<>uid://1pct4mrhayrb::::res://Scenes/camera_2d.gd
+player.tscn::PackedScene::983017382997445104::1749207268::0::1::::<><><>0<>0<><>::uid://bjyvjfuff5rfu::::res://assets/sprites/knight.png<>uid://c006ng6ad7qhm::::res://player.gd
+camera_2d.gd::GDScript::1856032507466056627::1749208406::0::1::::<>Camera2D<><>0<>0<><>::
