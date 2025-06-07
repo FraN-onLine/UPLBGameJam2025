@@ -28,7 +28,7 @@ func _process(delta):
 
 	if input_vector.x != 0:
 		$AnimatedSprite2D.flip_h = input_vector.x < 0
-	
+
 	var arrow = $Hand
 	if arrow:
 		var mouse_pos = get_global_mouse_position()
