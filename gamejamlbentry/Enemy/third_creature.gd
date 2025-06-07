@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-class_name Spirit
+class_name third_creature
 
 signal healthChanged
 
@@ -10,10 +10,10 @@ signal healthChanged
 @export var shoot_radius: float = 90.0
 @export var shoot_cooldown: float = 1.5
 @export var projectile_scene: PackedScene
-@export var min_distance: float = 80.0 #para lalayo if nakalapit si pleyer uwu
+@export var min_distance: float = 80.0
 
-var max_health = 30
-var health = 30
+var max_health = 15
+var health = 15
 var roam_direction = Vector2.RIGHT
 var roam_timer = 0.0
 var shoot_timer = 0.0
@@ -42,9 +42,9 @@ func _process(delta):
 			if abs(to_player.x) > 0.1:
 				$AnimatedSprite2D.flip_h = to_player.x > 0
 
-			# Shoot if in range
+			# Shoot two homing missiles if in range
 			if distance < shoot_radius and shoot_timer <= 0.0:
-				shoot_projectile(to_player.normalized())
+				shoot_homing_missiles(player)
 				shoot_timer = shoot_cooldown
 		else:
 			roam(delta)
@@ -73,13 +73,17 @@ func roam(delta):
 	if abs(roam_direction.x) > 0.1:
 		$AnimatedSprite2D.flip_h = roam_direction.x > 0
 
-func shoot_projectile(direction):
+func shoot_homing_missiles(target):
 	if projectile_scene:
-		var projectile = projectile_scene.instantiate()
-		get_parent().add_child(projectile)
-		var spawn_offset = direction.normalized() * 1
-		projectile.global_position = global_position + spawn_offset
-		projectile.direction = direction
+		for i in range(2):
+			var missile = projectile_scene.instantiate()
+			get_parent().add_child(missile)
+			var angle_offset = deg_to_rad(-10 + 20 * i) # -10 and +10 degrees
+			var dir = (target.global_position - global_position).normalized().rotated(angle_offset)
+			var spawn_offset = dir * 8
+			missile.global_position = global_position + spawn_offset
+			missile.direction = dir
+			missile.target = target
 
 func take_damage(damage):
 	health -= damage

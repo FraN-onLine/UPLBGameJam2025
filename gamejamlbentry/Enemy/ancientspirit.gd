@@ -1,56 +1,43 @@
 extends CharacterBody2D
 
-class_name Spirit
+class_name Ancient_Spirit
 
 signal healthChanged
 
 @onready var healthbar: ProgressBar = $Healthbar
-@export var speed: float = 30.0
-@export var detection_radius: float = 100.0
-@export var shoot_radius: float = 90.0
-@export var shoot_cooldown: float = 1.5
-@export var projectile_scene: PackedScene
-@export var min_distance: float = 80.0 #para lalayo if nakalapit si pleyer uwu
+@export var speed: float = 28.
+@export var detection_radius: float = 60.0
 
-var max_health = 30
-var health = 30
+var max_health = 20
+var health = 20
 var roam_direction = Vector2.RIGHT
 var roam_timer = 0.0
-var shoot_timer = 0.0
+var run_away_timer = 0.0
+var run_away_direction = Vector2.ZERO
 
 func _ready():
 	health = max_health
 	healthbar.init_health(max_health)
+	$Hitbox.connect("body_entered", Callable(self, "_on_body_entered"))
 
 func _process(delta):
-	shoot_timer -= delta
-	var player = get_nearest_player()
-	
-	if player:
+	if run_away_timer > 0:
+		run_away_timer -= delta
+		velocity = run_away_direction * speed
+		# Flip sprite based on run away direction
+		if abs(run_away_direction.x) > 0.1:
+			$AnimatedSprite2D.flip_h = run_away_direction.x > 0
+	else:
+		var player = get_nearest_player()
 		var to_player = player.global_position - global_position
 		var distance = to_player.length()
-		if distance < detection_radius:
-			# Maintain minimum distance
-			if distance > min_distance:
-				velocity = to_player.normalized() * speed
-			elif distance < min_distance * 0.8:
-				velocity = -to_player.normalized() * speed # Move away if too close
-			else:
-				velocity = Vector2.ZERO
-
+		if player and  distance < detection_radius:
+			velocity = to_player.normalized() * speed
 			# Flip sprite based on direction to player
 			if abs(to_player.x) > 0.1:
 				$AnimatedSprite2D.flip_h = to_player.x > 0
-
-			# Shoot if in range
-			if distance < shoot_radius and shoot_timer <= 0.0:
-				shoot_projectile(to_player.normalized())
-				shoot_timer = shoot_cooldown
 		else:
 			roam(delta)
-	else:
-		roam(delta)
-
 	move_and_slide()
 
 func get_nearest_player():
@@ -72,14 +59,7 @@ func roam(delta):
 	# Flip sprite when roaming
 	if abs(roam_direction.x) > 0.1:
 		$AnimatedSprite2D.flip_h = roam_direction.x > 0
-
-func shoot_projectile(direction):
-	if projectile_scene:
-		var projectile = projectile_scene.instantiate()
-		get_parent().add_child(projectile)
-		var spawn_offset = direction.normalized() * 1
-		projectile.global_position = global_position + spawn_offset
-		projectile.direction = direction
+	
 
 func take_damage(damage):
 	health -= damage
@@ -91,3 +71,10 @@ func take_damage(damage):
 		healthbar.visible = false
 		print("Unit is dead!")
 		self.queue_free()
+
+func _on_body_entered(body: Node2D) -> void:
+	if body.is_in_group("Player"):
+		body.take_damage(7.5)
+		var to_player = body.global_position - global_position
+		run_away_direction = -to_player.normalized()
+		run_away_timer = 0.6

@@ -1,0 +1,56 @@
+[gd_scene load_steps=8 format=3 uid="uid://xfb2khu115sd"]
+
+[ext_resource type="Script" uid="uid://bp70rta12dfms" path="res://Enemy/ancientspirit.gd" id="1_t0a2x"]
+[ext_resource type="Texture2D" uid="uid://b5ijn4dt0df05" path="res://Assets/0x72_16x16DungeonTileset.v5.png" id="1_tst08"]
+[ext_resource type="PackedScene" uid="uid://ygi0h704mijm" path="res://Misc/healthbar.tscn" id="2_efx2h"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t0a2x"]
+atlas = ExtResource("1_tst08")
+region = Rect2(64, 144, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7exu2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t0a2x")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t0a2x"]
+radius = 11.0
+height = 22.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_efx2h"]
+radius = 7.0
+height = 14.0
+
+[node name="ancientspirit" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 3
+script = ExtResource("1_t0a2x")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -1)
+sprite_frames = SubResource("SpriteFrames_7exu2")
+
+[node name="Healthbar" parent="." instance=ExtResource("2_efx2h")]
+offset_left = -6.0
+offset_top = -14.0
+offset_right = 6.0
+offset_bottom = -13.0
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0, -3)
+shape = SubResource("CapsuleShape2D_t0a2x")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(0, -3)
+shape = SubResource("CapsuleShape2D_efx2h")
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Hitbox" to="." method="_on_area_2d_body_entered"]
