@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://cpox1ufgx837r"]
+[gd_scene load_steps=28 format=4 uid="uid://cpox1ufgx837r"]
 
 [ext_resource type="PackedScene" uid="uid://dcsk8ndtlfdua" path="res://Character/Player.tscn" id="1_jjgbg"]
 [ext_resource type="Texture2D" uid="uid://dntiqcu20m4lr" path="res://Assets/Backgrounds/Tilesets/TilesetNature.png" id="2_8gbba"]
@@ -10,11 +10,10 @@
 [ext_resource type="Texture2D" uid="uid://jmkilewks5ll" path="res://Assets/Backgrounds/Tilesets/TilesetDesert.png" id="7_ynf5e"]
 [ext_resource type="Texture2D" uid="uid://ygf65f2yktou" path="res://Assets/Backgrounds/Vehicles/Boat.png" id="8_ynf5e"]
 [ext_resource type="PackedScene" uid="uid://br806ppqkh0au" path="res://Enemy/spirit.tscn" id="9_hptm8"]
-[ext_resource type="Script" uid="uid://bnyxo5r2jpyny" path="res://Scenes/Minimap.gd" id="11_d1ilt"]
-[ext_resource type="Shader" uid="uid://c4fttcbfk1k3a" path="res://Scenes/circleradar.gdshader" id="11_jkdf5"]
+[ext_resource type="Script" uid="uid://bnyxo5r2jpyny" path="res://Scenes/sub_viewport.gd" id="11_d1ilt"]
+[ext_resource type="Shader" uid="uid://ccly88c8cxp40" path="res://Scenes/main.gdshader" id="11_jkdf5"]
 [ext_resource type="Texture2D" uid="uid://b5ijn4dt0df05" path="res://Assets/0x72_16x16DungeonTileset.v5.png" id="12_6iyac"]
-[ext_resource type="Script" uid="uid://ugrtrjadv7qn" path="res://Scenes/circleminimap.gd" id="12_wsu2k"]
-[ext_resource type="Script" uid="uid://bc3nm5jmmbii" path="res://Scenes/minimap_border.gd" id="15_wsu2k"]
+[ext_resource type="Script" uid="uid://n51f86osfgsk" path="res://Scenes/texture_rect.gd" id="12_wsu2k"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bo1nx"]
 texture = ExtResource("2_8gbba")
@@ -1624,7 +1623,6 @@ sources/7 = SubResource("TileSetAtlasSource_6iyac")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_k12tt"]
 shader = ExtResource("11_jkdf5")
-shader_parameter/edge_softness = 0.01
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_h1bgf"]
 viewport_path = NodePath("HUD/Minimap/TextureRect/SubViewport")
@@ -1683,10 +1681,8 @@ position = Vector2(-164, -30)
 [node name="HUD" type="CanvasLayer" parent="."]
 
 [node name="Minimap" type="SubViewportContainer" parent="HUD"]
-offset_left = 12.0
-offset_top = 13.0
-offset_right = 12.0
-offset_bottom = 13.0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="TextureRect" type="TextureRect" parent="HUD/Minimap"]
 material = SubResource("ShaderMaterial_k12tt")
@@ -1703,12 +1699,11 @@ script = ExtResource("11_d1ilt")
 [node name="Camera2D" type="Camera2D" parent="HUD/Minimap/TextureRect/SubViewport"]
 zoom = Vector2(0.3, 0.3)
 
+[node name="Line2D" type="Line2D" parent="HUD/Minimap"]
+position = Vector2(1, 1)
+points = PackedVector2Array(-4, 199, 199, 199, 199, 0, 0, 0, 0, 198)
+width = 3.0
+
 [node name="AnimatedSprite2D - to be replaced" type="AnimatedSprite2D" parent="HUD/Minimap"]
 position = Vector2(101, 95)
 sprite_frames = SubResource("SpriteFrames_jkdf5")
-
-[node name="Line2D" type="Line2D" parent="HUD/Minimap"]
-position = Vector2(100, 98)
-width = 3.0
-default_color = Color(0.587871, 0, 0.253259, 1)
-script = ExtResource("15_wsu2k")
