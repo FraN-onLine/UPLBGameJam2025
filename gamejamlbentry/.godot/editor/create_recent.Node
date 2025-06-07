@@ -1,6 +1,9 @@
-CollisionShape2D
-Label
 Area2D
+CollisionShape2D
+Hitbox
+Sprite2D
+Node2D
+Label
 AnimatedSprite2D
 SubViewport
 SubViewportContainer
@@ -8,7 +11,4 @@ Line2D
 Path2D
 TextureRect
 ShapeCast2D
-Sprite2D
 Camera2D
-CanvasLayer
-CharacterBody2D

@@ -5,19 +5,28 @@ class_name Player
 signal healthChanged
 
 @onready var healthbar: ProgressBar = $Healthbar
+@onready var sword: Area2D = $Hand/Sword/Node2D/Sprite2D/Hitbox  # Adjust path as needed
+
 @export var speed: float = 200.0
 @export var camera: Camera2D
+
 var max_health = 100
 var health = 100
 
 func _ready():
 	health = max_health
 	healthbar.init_health(max_health)
+	if sword:
+		sword.monitoring = false
+	else:
+		print("Sword node is null. Check instancing or load order.")
+
 
 func _process(delta):
 	var input_vector = Vector2.ZERO
 	input_vector.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
 	input_vector.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
+	
 	if input_vector.length() > 0:
 		input_vector = input_vector.normalized() * speed
 	else:
@@ -29,6 +38,7 @@ func _process(delta):
 	if input_vector.x != 0:
 		$AnimatedSprite2D.flip_h = input_vector.x < 0
 
+	# Aim the arm/hand toward mouse
 	var arrow = $Hand
 	if arrow:
 		var mouse_pos = get_global_mouse_position()
@@ -36,6 +46,12 @@ func _process(delta):
 		arrow.rotation = angle
 		var radius = 3.5
 		arrow.position = Vector2.RIGHT.rotated(angle) * radius
+
+	# Toggle sword monitoring on attack input
+	if Input.is_action_just_pressed("basic_attack"):
+		sword.monitoring = true
+	elif Input.is_action_just_released("basic_attack"):
+		sword.monitoring = false
 
 	if camera:
 		camera.position = position

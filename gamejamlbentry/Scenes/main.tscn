@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://cpox1ufgx837r"]
+[gd_scene load_steps=30 format=4 uid="uid://cpox1ufgx837r"]
 
 [ext_resource type="PackedScene" uid="uid://dcsk8ndtlfdua" path="res://Character/Player.tscn" id="1_jjgbg"]
 [ext_resource type="Texture2D" uid="uid://dntiqcu20m4lr" path="res://Assets/Backgrounds/Tilesets/TilesetNature.png" id="2_8gbba"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://b5ijn4dt0df05" path="res://Assets/0x72_16x16DungeonTileset.v5.png" id="12_6iyac"]
 [ext_resource type="Script" uid="uid://ugrtrjadv7qn" path="res://Scenes/circleminimap.gd" id="12_wsu2k"]
 [ext_resource type="Script" uid="uid://bc3nm5jmmbii" path="res://Scenes/minimap_border.gd" id="15_wsu2k"]
+[ext_resource type="PackedScene" uid="uid://dj5rgvavsc5qx" path="res://Scenes/sword.tscn" id="16_k12tt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bo1nx"]
 texture = ExtResource("2_8gbba")
@@ -1712,3 +1713,6 @@ position = Vector2(100, 98)
 width = 3.0
 default_color = Color(0.587871, 0, 0.253259, 1)
 script = ExtResource("15_wsu2k")
+
+[node name="Sword" parent="." instance=ExtResource("16_k12tt")]
+position = Vector2(-1, -5)

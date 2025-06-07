@@ -24,6 +24,8 @@ animations = [{
 radius = 6.0
 
 [node name="Spirit" type="CharacterBody2D" groups=["Enemy"]]
+collision_layer = 4
+collision_mask = 3
 script = ExtResource("1_yt78l")
 projectile_scene = ExtResource("2_y4ido")
 

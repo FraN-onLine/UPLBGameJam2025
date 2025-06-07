@@ -1,9 +1,10 @@
 res://Scenes/main.tscn
 res://Scenes/circleradar.gdshader
 res://Character/Player.tscn
-res://Misc/sign.tscn
-res://Interaction/interaction area/interaction_area.tscn
-res://Interaction/interactionManager.tscn
-res://Interaction/interaction area/interaction_area.gd
-res://Misc/sign.gd
-res://Interaction/interaction_manager.gd
+res://Scenes/Sword.tscn
+res://Enemy/spirit.tscn
+res://Scenes/Hitbox.gd
+res://Enemy/spirit.gd
+res://Character/player.gd
+res://Scenes/sword.tscn
+res://Scenes/sword.gd
