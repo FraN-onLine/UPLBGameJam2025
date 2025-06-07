@@ -7,6 +7,7 @@ signal healthChanged
 @onready var healthbar: ProgressBar = $Healthbar
 @export var speed: float = 28.
 @export var detection_radius: float = 60.0
+var minimap_icon = "mob"
 
 var max_health = 20
 var health = 20

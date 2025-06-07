@@ -8,3 +8,6 @@ res://Enemy/ancientspirit.tscn
 res://Enemy/spirit.gd
 res://Scenes/minimap_better.gd
 res://Character/player.gd
+res://Enemy/spirit_projectile.gd
+res://Enemy/third_creature.gd
+res://Enemy/ancientspirit.gd

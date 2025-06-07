@@ -58,7 +58,7 @@ script = ExtResource("1_schp4")
 sprite_frames = SubResource("SpriteFrames_pusnx")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.721658
+frame_progress = 0.997951
 
 [node name="HitBox" type="Area2D" parent="."]
 disable_mode = 2

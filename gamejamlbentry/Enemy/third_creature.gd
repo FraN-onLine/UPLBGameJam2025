@@ -17,7 +17,7 @@ var health = 15
 var roam_direction = Vector2.RIGHT
 var roam_timer = 0.0
 var shoot_timer = 0.0
-
+var minimap_icon = "mob"
 func _ready():
 	health = max_health
 	healthbar.init_health(max_health)

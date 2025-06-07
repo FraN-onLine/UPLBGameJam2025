@@ -2,7 +2,7 @@ extends Area2D
 
 @export var speed: float = 250.0
 var direction = Vector2.ZERO
-
+var minimap_icon = "mob"
 func _ready():
 	connect("area_entered", Callable(self, "_on_area_entered"))
 

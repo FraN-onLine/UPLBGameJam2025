@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://cpox1ufgx837r"]
+[gd_scene load_steps=26 format=4 uid="uid://cpox1ufgx837r"]
 
 [ext_resource type="Texture2D" uid="uid://dntiqcu20m4lr" path="res://Assets/Backgrounds/Tilesets/TilesetNature.png" id="2_8gbba"]
 [ext_resource type="Texture2D" uid="uid://cj1snkoud78mb" path="res://Assets/Backgrounds/Tilesets/TilesetField.png" id="3_jjvhh"]
@@ -12,6 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://dcsk8ndtlfdua" path="res://Character/Player.tscn" id="10_fdnlq"]
 [ext_resource type="PackedScene" uid="uid://dfpr2luqs5djf" path="res://Scenes/minimapBetter.tscn" id="12_b3802"]
 [ext_resource type="PackedScene" uid="uid://br806ppqkh0au" path="res://Enemy/spirit.tscn" id="13_fdnlq"]
+[ext_resource type="PackedScene" uid="uid://xfb2khu115sd" path="res://Enemy/ancientspirit.tscn" id="14_wsu2k"]
+[ext_resource type="PackedScene" uid="uid://donc5nia1q2wn" path="res://Enemy/third_creature.tscn" id="15_k12tt"]
 [ext_resource type="PackedScene" uid="uid://dj5rgvavsc5qx" path="res://Scenes/sword.tscn" id="16_k12tt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bo1nx"]
@@ -1680,3 +1682,12 @@ zoom = -4
 
 [node name="Sword" parent="." instance=ExtResource("16_k12tt")]
 position = Vector2(-1, -5)
+
+[node name="thirdCreature" parent="." instance=ExtResource("15_k12tt")]
+position = Vector2(-388, 20)
+
+[node name="thirdCreature2" parent="." instance=ExtResource("15_k12tt")]
+position = Vector2(-343, -83)
+
+[node name="ancientspirit" parent="." instance=ExtResource("14_wsu2k")]
+position = Vector2(-251, -142)
