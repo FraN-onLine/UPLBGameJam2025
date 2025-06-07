@@ -1,6 +1,5 @@
-[gd_scene load_steps=30 format=4 uid="uid://cpox1ufgx837r"]
+[gd_scene load_steps=24 format=4 uid="uid://cpox1ufgx837r"]
 
-[ext_resource type="PackedScene" uid="uid://dcsk8ndtlfdua" path="res://Character/Player.tscn" id="1_jjgbg"]
 [ext_resource type="Texture2D" uid="uid://dntiqcu20m4lr" path="res://Assets/Backgrounds/Tilesets/TilesetNature.png" id="2_8gbba"]
 [ext_resource type="Texture2D" uid="uid://cj1snkoud78mb" path="res://Assets/Backgrounds/Tilesets/TilesetField.png" id="3_jjvhh"]
 [ext_resource type="Texture2D" uid="uid://brurmt38gb4v3" path="res://Assets/Backgrounds/Tilesets/TilesetVillageAbandoned.png" id="3_kry3j"]
@@ -9,12 +8,10 @@
 [ext_resource type="Texture2D" uid="uid://c4r6x00kb3g7p" path="res://Assets/Backgrounds/Tilesets/TilesetHole.png" id="6_344ge"]
 [ext_resource type="Texture2D" uid="uid://jmkilewks5ll" path="res://Assets/Backgrounds/Tilesets/TilesetDesert.png" id="7_ynf5e"]
 [ext_resource type="Texture2D" uid="uid://ygf65f2yktou" path="res://Assets/Backgrounds/Vehicles/Boat.png" id="8_ynf5e"]
-[ext_resource type="PackedScene" uid="uid://br806ppqkh0au" path="res://Enemy/spirit.tscn" id="9_hptm8"]
-[ext_resource type="Script" uid="uid://bnyxo5r2jpyny" path="res://Scenes/Minimap.gd" id="11_d1ilt"]
-[ext_resource type="Shader" uid="uid://c4fttcbfk1k3a" path="res://Scenes/circleradar.gdshader" id="11_jkdf5"]
-[ext_resource type="Texture2D" uid="uid://b5ijn4dt0df05" path="res://Assets/0x72_16x16DungeonTileset.v5.png" id="12_6iyac"]
-[ext_resource type="Script" uid="uid://ugrtrjadv7qn" path="res://Scenes/circleminimap.gd" id="12_wsu2k"]
-[ext_resource type="Script" uid="uid://bc3nm5jmmbii" path="res://Scenes/minimap_border.gd" id="15_wsu2k"]
+[ext_resource type="Texture2D" uid="uid://c8g1dhlwgv2qc" path="res://Assets/Backgrounds/Animated/Water Ripples/SpriteSheet16x16.png" id="9_h1bgf"]
+[ext_resource type="PackedScene" uid="uid://dcsk8ndtlfdua" path="res://Character/Player.tscn" id="10_fdnlq"]
+[ext_resource type="PackedScene" uid="uid://dfpr2luqs5djf" path="res://Scenes/minimapBetter.tscn" id="12_b3802"]
+[ext_resource type="PackedScene" uid="uid://br806ppqkh0au" path="res://Enemy/spirit.tscn" id="13_fdnlq"]
 [ext_resource type="PackedScene" uid="uid://dj5rgvavsc5qx" path="res://Scenes/sword.tscn" id="16_k12tt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bo1nx"]
@@ -1598,6 +1595,9 @@ texture = ExtResource("7_ynf5e")
 19:11/0 = 0
 8:7/size_in_atlas = Vector2i(2, 2)
 8:7/0 = 0
+11:3/0 = 0
+12:3/0 = 0
+19:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6iyac"]
 texture = ExtResource("8_ynf5e")
@@ -1612,6 +1612,13 @@ texture = ExtResource("8_ynf5e")
 3:1/0 = 0
 4:1/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b3802"]
+texture = ExtResource("9_h1bgf")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+
 [sub_resource type="TileSet" id="TileSet_8gbba"]
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_bo1nx")
@@ -1622,28 +1629,7 @@ sources/4 = SubResource("TileSetAtlasSource_ynf5e")
 sources/5 = SubResource("TileSetAtlasSource_hptm8")
 sources/6 = SubResource("TileSetAtlasSource_d1ilt")
 sources/7 = SubResource("TileSetAtlasSource_6iyac")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_k12tt"]
-shader = ExtResource("11_jkdf5")
-shader_parameter/edge_softness = 0.01
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_h1bgf"]
-viewport_path = NodePath("HUD/Minimap/TextureRect/SubViewport")
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fdnlq"]
-atlas = ExtResource("12_6iyac")
-region = Rect2(160, 224, 16, 16)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_jkdf5"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fdnlq")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
+sources/8 = SubResource("TileSetAtlasSource_b3802")
 
 [node name="Node2D" type="Node2D"]
 y_sort_enabled = true
@@ -1674,45 +1660,23 @@ use_parent_material = true
 tile_map_data = PackedByteArray("AAAaAOD/AgAMAAYAAAARAN3/AgALAAMAAAAYANz/AgAJAAUAAAAYAN3/AgAJAAYAAAAZANz/AgAKAAUAAAAZAN3/AgAKAAYAAAArAM7/AgAJAAcAAAArAM//AgAJAAgAAAAsAM7/AgAKAAcAAAAsAM//AgAKAAgAAAArAND/AgAFAAsAAAA0ANH/AgAHAAgAAAA0ANL/AgAHAAkAAAA0ANP/AgAHAAoAAAA0ANT/AgAHAAsAAAA1ANH/AgAIAAgAAAA1ANL/AgAIAAkAAAA1ANP/AgAIAAoAAAA1ANT/AgAIAAsAAAAvANP/AgAGAAkAAAAvANT/AgAGAAoAAAAwANX/AgAJAAsAAAA6AP3/BgAAAAMAAAA6AP7/BgAAAAQAAAA7AP3/BgABAAMAAAA7AP7/BgABAAQAAAAQAAIAAgAPAAsAAABCAOz/BwAAAAAAAABCAO3/BwAAAAEAAABDAOz/BwABAAAAAABDAO3/BwABAAEAAABEAOz/BwACAAAAAABEAO3/BwACAAEAAABFAOz/BwADAAAAAABFAO3/BwADAAEAAABGAOz/BwAEAAAAAABGAO3/BwAEAAEAAADr/7//AgALAAMAAADn/8z/AgAJAAUAAADn/83/AgAJAAYAAADo/8z/AgAKAAUAAADo/83/AgAKAAYAAADl/7z/AgARAAoAAADm/7z/AgASAAoAAADn/7z/AgATAAoAAADl/8L/AgAJAAcAAADl/8P/AgAJAAgAAADm/8L/AgAKAAcAAADm/8P/AgAKAAgAAADj/8D/AgAEAAAAAADz/9f/AgAOAAAAAAAaALr/AgARAAAAAAA=")
 tile_set = SubResource("TileSet_8gbba")
 
-[node name="Player" parent="." instance=ExtResource("1_jjgbg")]
-y_sort_enabled = true
-position = Vector2(106, 18)
+[node name="Player" parent="." instance=ExtResource("10_fdnlq")]
+position = Vector2(112, 24)
 
-[node name="Spirit" parent="." instance=ExtResource("9_hptm8")]
-position = Vector2(-164, -30)
+[node name="Spirit" parent="." instance=ExtResource("13_fdnlq")]
+position = Vector2(259, -462)
+
+[node name="Spirit2" parent="." instance=ExtResource("13_fdnlq")]
+position = Vector2(334, -438)
+
+[node name="Spirit3" parent="." instance=ExtResource("13_fdnlq")]
+position = Vector2(76, -378)
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
-[node name="Minimap" type="SubViewportContainer" parent="HUD"]
-offset_left = 12.0
-offset_top = 13.0
-offset_right = 12.0
-offset_bottom = 13.0
-
-[node name="TextureRect" type="TextureRect" parent="HUD/Minimap"]
-material = SubResource("ShaderMaterial_k12tt")
-layout_mode = 2
-texture = SubResource("ViewportTexture_h1bgf")
-script = ExtResource("12_wsu2k")
-
-[node name="SubViewport" type="SubViewport" parent="HUD/Minimap/TextureRect"]
-handle_input_locally = false
-size = Vector2i(200, 200)
-render_target_update_mode = 4
-script = ExtResource("11_d1ilt")
-
-[node name="Camera2D" type="Camera2D" parent="HUD/Minimap/TextureRect/SubViewport"]
-zoom = Vector2(0.3, 0.3)
-
-[node name="AnimatedSprite2D - to be replaced" type="AnimatedSprite2D" parent="HUD/Minimap"]
-position = Vector2(101, 95)
-sprite_frames = SubResource("SpriteFrames_jkdf5")
-
-[node name="Line2D" type="Line2D" parent="HUD/Minimap"]
-position = Vector2(100, 98)
-width = 3.0
-default_color = Color(0.587871, 0, 0.253259, 1)
-script = ExtResource("15_wsu2k")
+[node name="Minimap" parent="HUD" instance=ExtResource("12_b3802")]
+player = NodePath("../../Player")
+zoom = -4
 
 [node name="Sword" parent="." instance=ExtResource("16_k12tt")]
 position = Vector2(-1, -5)

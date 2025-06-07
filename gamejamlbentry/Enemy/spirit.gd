@@ -17,15 +17,17 @@ var health = 30
 var roam_direction = Vector2.RIGHT
 var roam_timer = 0.0
 var shoot_timer = 0.0
+var minimap_icon = "mob"
 
 func _ready():
 	health = max_health
 	healthbar.init_health(max_health)
 
+
 func _process(delta):
 	shoot_timer -= delta
 	var player = get_nearest_player()
-	
+
 	if player:
 		var to_player = player.global_position - global_position
 		var distance = to_player.length()
@@ -40,7 +42,7 @@ func _process(delta):
 
 			# Flip sprite based on direction to player
 			if abs(to_player.x) > 0.1:
-				$AnimatedSprite2D.flip_h = to_player.x > 0
+				$AnimatedSprite2D.flip_h = to_player.x < 0
 
 			# Shoot if in range
 			if distance < shoot_radius and shoot_timer <= 0.0:
@@ -64,6 +66,7 @@ func get_nearest_player():
 	return nearest
 
 func roam(delta):
+	$AnimatedSprite2D.play("Idle")
 	roam_timer -= delta
 	if roam_timer <= 0:
 		roam_direction = Vector2(randf() * 2 - 1, randf() * 2 - 1).normalized()
@@ -71,9 +74,10 @@ func roam(delta):
 	velocity = roam_direction * speed * 0.5
 	# Flip sprite when roaming
 	if abs(roam_direction.x) > 0.1:
-		$AnimatedSprite2D.flip_h = roam_direction.x > 0
+		$AnimatedSprite2D.flip_h = roam_direction.x < 0
 
 func shoot_projectile(direction):
+	$AnimatedSprite2D.play("Attack")
 	if projectile_scene:
 		var projectile = projectile_scene.instantiate()
 		get_parent().add_child(projectile)

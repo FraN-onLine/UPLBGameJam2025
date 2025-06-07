@@ -24,7 +24,7 @@ animations = [{
 radius = 6.0
 height = 18.0
 
-[node name="thirdCreature" type="CharacterBody2D"]
+[node name="thirdCreature" type="CharacterBody2D" groups=["Enemy", "minimap_objects"]]
 script = ExtResource("1_pv7c6")
 projectile_scene = ExtResource("2_thbbj")
 

@@ -1,10 +1,10 @@
 res://Scenes/main.tscn
-res://Scenes/circleradar.gdshader
-res://Character/Player.tscn
-res://Scenes/Sword.tscn
 res://Enemy/spirit.tscn
-res://Scenes/Hitbox.gd
-res://Enemy/spirit.gd
-res://Character/player.gd
+res://Character/Player.tscn
 res://Scenes/sword.tscn
-res://Scenes/sword.gd
+res://Scenes/minimapBetter.tscn
+res://Enemy/third_creature.tscn
+res://Enemy/ancientspirit.tscn
+res://Enemy/spirit.gd
+res://Scenes/minimap_better.gd
+res://Character/player.gd

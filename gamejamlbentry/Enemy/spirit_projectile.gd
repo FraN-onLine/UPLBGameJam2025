@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var speed: float = 400.0
+@export var speed: float = 250.0
 var direction = Vector2.ZERO
 
 func _ready():
@@ -9,6 +9,7 @@ func _ready():
 func _process(delta):
 	if direction != Vector2.ZERO:
 		position += direction.normalized() * speed * delta
+		$AnimatedSprite2D.rotation = direction.angle()
 
 	# Remove if out of player's camera view
 	var player = get_tree().get_nodes_in_group("Player")
